@@ -18,9 +18,9 @@ def printInstructions():
     print('RULES.\n1.Don\'t "cheat"\n2.Don\'t "Feed The Bear"')
     print("GOOD LUCK!\n\n")
 
-## following up on that, a lot of the different portions of the game could be extracted to helper functions.
+## following up on that, a lot of the different portions of the game could be extracted to helper functions. But you'll soon encounter that in your studies, and it's normal to begin with programs like yours
 
-while True: ## This is pretty standard, I think, when having a loop that's supposed to go on indefinitely.
+while True: ## This is pretty standard, I think, when having a loop that's supposed to go on indefinitely. But it requires an explicit break statement. See line 91
 
     secret_number = str(random.randint(1, 100))
 
@@ -47,7 +47,7 @@ while True: ## This is pretty standard, I think, when having a loop that's suppo
 
         # Cheat code reveals Secret Number
         if (guess) == "cheat":
-            print("********** Try guessing " + str(secret_number) + " **********.\n\n")
+            print("********** Try guessing " + str(secret_number) + " **********.\n\n") ## You'll likely learn about f strings at some point, which provides an alternative way to write this
             user = "pumpkin eater"
             continue
 
@@ -55,12 +55,12 @@ while True: ## This is pretty standard, I think, when having a loop that's suppo
         if (guess) == secret_number:
             if user == "eaten":
                 print("UH-OH\nLooks like you were eaten.\nGAME OVER")
-            elif user != "pumpkin eater":
-                print("\nYOU WIN!!!!\n\nCongratulations!!!!!!!!!\n")
-            else:
+            elif user == "pumpkin eater": ## I switched this up, since I had a hard time following the original way the clauses were ordered. But that's a minor issue / matter of preference.
                 print(
                     """Correct!!\nHmmmmm....You didn't CHEAT did you!?!?!? Oh well."""
                 )
+            else:
+                print("\nYOU WIN!!!!\n\nCongratulations!!!!!!!!!\n")
             break
 
         # For incorrect guesses
@@ -68,12 +68,12 @@ while True: ## This is pretty standard, I think, when having a loop that's suppo
         else:
             print("Nope. Sorry!")
 
-        ## One reason to have helper functions is to avoid if statements following else statements like this.
+        ## One reason to have helper functions is to avoid if statements following else statements like this. But again, you'll practice that soon.
         # Tells user their number of remaining attempts
         if tries > 1:
             print("\nYou have " + str(tries) + " tries remaining.\n")
             continue
-        if tries == 1:
+        if tries == 1: ## Maybe make this an elif?
             print("\nTHIS IS YOUR LAST GUESS!!!\n\n")
             continue
 
@@ -88,7 +88,7 @@ while True: ## This is pretty standard, I think, when having a loop that's suppo
     # Responds to user and either continues or ends game
     if play != "yes":
         print("Okay. Good bye")
-        break
+        break ## this is necessary to add after my change of the while Loop
     else:
         print(
             """
