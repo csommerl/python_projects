@@ -86,12 +86,12 @@ while True: ## This is pretty standard, I think, when having a loop that's suppo
     play = input()
 
     # Responds to user and either continues or ends game
-    if play != "yes":
-        print("Okay. Good bye")
-        break ## this is necessary to add after my change of the while Loop
-    else:
+    if play == "yes": ## I reordered this. Maybe a matter of personal preference. But it seems to make sense to have anything that would end a loop at the very end.
         print(
             """
         GREAT!
         LET'S PLAY AGAIN!"""
         )
+    else:
+        print("Okay. Good bye")
+        break ## this is necessary to add after my change of the while Loop
