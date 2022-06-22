@@ -7,21 +7,25 @@
 # there is probably a better way to do this
 # but I wanted to try using a for loop with a range inside a while loop
 
+# Game selects a random number between 1 and 100
+import random ## I believe that it's good practice to import packages at the top, but I might be wrong.
 
-play = "yes"
-while play == "yes":
-
-    # Game selects a random number between 1 and 100
-    import random
-
-    secret_number = str(random.randint(1, 100))
-
-    # Intro Greeting
+## It's likely you haven't gotten to defining functions, so this might be new to you?
+def printInstructions():
     print(
         "WELCOME!\nTry to guess the secret number between 1 and 100\nYou only have 5 chances\nIt won't be easy!\n\n"
     )
     print('RULES.\n1.Don\'t "cheat"\n2.Don\'t "Feed The Bear"')
     print("GOOD LUCK!\n\n")
+
+## following up on that, a lot of the different portions of the game could be extracted to helper functions.
+
+while True: ## This is pretty standard, I think, when having a loop that's supposed to go on indefinitely.
+
+    secret_number = str(random.randint(1, 100))
+
+    # Intro Greeting
+    printInstructions()
 
     # Gives the user five tries
     for tries in range(4, -1, -1):
@@ -31,7 +35,7 @@ while play == "yes":
         guess = input()
 
         # Feeding the Bear kills you
-        if (guess).lower() == "feed the bear":
+        if guess.lower() == "feed the bear": ## I don't believe you need parentheses around guess, but there might be different style preferences that are taught.
             print("uh-oh!\n.........\nYou made him angry!!!!!!")
             print(
                 "RRRRRRAAAAAAAAAAAAWWWWWWWWRRRRRRRRRRRRR/nGGGGGGGRRRRRRRRRROOOOOOWWWWWLLLL\nGGGGGGGGGRRRRRRRRRRRR"
@@ -64,6 +68,7 @@ while play == "yes":
         else:
             print("Nope. Sorry!")
 
+        ## One reason to have helper functions is to avoid if statements following else statements like this.
         # Tells user their number of remaining attempts
         if tries > 1:
             print("\nYou have " + str(tries) + " tries remaining.\n")
@@ -83,6 +88,7 @@ while play == "yes":
     # Responds to user and either continues or ends game
     if play != "yes":
         print("Okay. Good bye")
+        break
     else:
         print(
             """
